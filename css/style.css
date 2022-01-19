@@ -1,0 +1,151 @@
+html, body {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: url('../img/bk.jpg');
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%;
+    position: relative;
+    color: black;
+}
+
+.top-box {
+    position: absolute;
+    top: 9%;
+    left: 40%;
+    width: 21%;
+    height: 27%;
+}
+
+.top-box .festival-top, .festival-bottom {
+    color: white;
+    width: 100%;
+    font-size: 180px;
+    text-align: center;
+}
+
+.top-box .lunar {
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
+
+.blessing-box {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    width: 62%;
+    height: 10%;
+    color: white;
+    font-size: 50px;
+}
+
+.music-box {
+    position: absolute;
+    top: 70%;
+    left: 20%;
+    width: 62%;
+    height: 10%;
+    z-index: 100000;
+}
+
+.music-box .choose {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    background-color: #28a0f5;
+    border: 1px solid #28a0f5;
+    border-radius: 10px;
+    line-height: 90px;
+}
+
+.copyright-box {
+    position: absolute;
+    top: 90%;
+    left: 20%;
+    width: 68%;
+    height: 10%;
+    color: white;
+    font-size: 50px;
+    text-align: right;
+}
+
+.poem1 {
+    position: absolute;
+    display: none;
+    top: 30%;
+    left: 25%;
+    width: 8%;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+}
+
+.poem2 {
+    position: absolute;
+    display: none;
+    top: 30%;
+    left: 40%;
+    width: 8%;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+}
+
+.poem3 {
+    position: absolute;
+    display: none;
+    top: 30%;
+    left: 55%;
+    width: 8%;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+}
+
+.poem4 {
+    position: absolute;
+    display: none;
+    top: 30%;
+    left: 70%;
+    width: 8%;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+}
+
+p {
+    margin: 0;
+    background: -webkit-linear-gradient(left,
+    #ffffff,
+    #ff0000 6.25%,
+    #ff7d00 12.5%,
+    #ffff00 18.75%,
+    #00ff00 25%,
+    #00ffff 31.25%,
+    #0000ff 37.5%,
+    #ff00ff 43.75%,
+    #ffff00 50%,
+    #ff0000 56.25%,
+    #ff7d00 62.5%,
+    #ffff00 68.75%,
+    #00ff00 75%,
+    #00ffff 81.25%,
+    #0000ff 87.5%,
+    #ff00ff 93.75%,
+    #ffff00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    animation: masked-animation 2s infinite linear;
+}
+
+@keyframes masked-animation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100%, 0;
+    }
+}

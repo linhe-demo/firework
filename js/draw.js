@@ -44,7 +44,7 @@ function showInfo() {
 
     $('html, body').css({'background':'transparent', 'background-color':'black'});
     $('.top-box, .blessing-box, .music-box, .copyright-box').html('');
-    setTimeout("showText('give')", 22000);
+    setTimeout("showText('give')", 26000);
     setTimeout("showText('poem1')", 22000);
     setTimeout("showText('poem2')", 23000);
     setTimeout("showText('poem3')", 24000);

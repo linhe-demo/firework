@@ -43,7 +43,8 @@ function showInfo() {
     S.init();
 
     $('html, body').css({'background':'transparent', 'background-color':'black'});
-    $('.top-box, .blessing-box, .music-box, .copyright-box').html('');
+    $('.copyright-box').html('');
+    $('.top-box, .blessing-box, .music-box').remove();
     setTimeout("showText('give')", 26000);
     setTimeout("showText('poem1')", 22000);
     setTimeout("showText('poem2')", 23000);
@@ -188,6 +189,7 @@ function splode(x, y, z) {
     }
     d = Math.sqrt((x - playerX) * (x - playerX) + (y - playerY) * (y - playerY) + (z - playerZ) * (z - playerZ));
     pow.volume = 1.5 / (1 + d / 10);
+    pow.load();
     pow.play();
 }
 

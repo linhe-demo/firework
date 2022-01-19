@@ -19,7 +19,7 @@ function initVars() {
 
     for (i = 1; i <= 10; ++i) {
         sparkPic = new Image();
-        sparkPic.src = s + "spark" + i + ".png";
+        sparkPic.src = "./img/spark" + i + ".png";
         sparkPics.push(sparkPic);
     }
     sparks = new Array();

@@ -1,4 +1,5 @@
 var begin = false;
+var s = "https://cantelope.org/NYE/";
 
 function initVars() {
     pi = Math.PI;
@@ -15,7 +16,7 @@ function initVars() {
     gravity = .02;
     seeds = new Array();
     sparkPics = new Array();
-    s = "https://cantelope.org/NYE/";
+
     for (i = 1; i <= 10; ++i) {
         sparkPic = new Image();
         sparkPic.src = s + "spark" + i + ".png";
@@ -26,6 +27,10 @@ function initVars() {
     pow2 = new Audio(s + "pow2.ogg");
     pow3 = new Audio(s + "pow3.ogg");
     pow4 = new Audio(s + "pow4.ogg");
+    pow1.load();
+    pow2.load();
+    pow3.load();
+    pow4.load();
     frames = 0;
 }
 
@@ -175,21 +180,20 @@ function splode(x, y, z) {
     }
     switch (parseInt(Math.random() * 4)) {
         case 0:
-            pow = new Audio(s + "pow1.ogg");
+            pow = pow1;
             break;
         case 1:
-            pow = new Audio(s + "pow2.ogg");
+            pow = pow2;
             break;
         case 2:
-            pow = new Audio(s + "pow3.ogg");
+            pow = pow3;
             break;
         case 3:
-            pow = new Audio(s + "pow4.ogg");
+            pow = pow4;
             break;
     }
     d = Math.sqrt((x - playerX) * (x - playerX) + (y - playerY) * (y - playerY) + (z - playerZ) * (z - playerZ));
     pow.volume = 1.5 / (1 + d / 10);
-    pow.load();
     pow.play();
 }
 

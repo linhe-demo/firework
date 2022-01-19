@@ -36,7 +36,7 @@ function showInfo() {
     });
 
 
-    pow1 = new Audio(s + "pow1.ogg");
+    pow1 = new Audio("./music/music1.mp3");
     pow1.play();
     return;
 

@@ -35,6 +35,11 @@ function showInfo() {
         cy = canvas.height / 2;
     });
 
+
+    pow1 = new Audio(s + "pow1.ogg");
+    pow1.play();
+    return;
+
     initVars();
     frame();
     S.init();

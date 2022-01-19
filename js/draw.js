@@ -35,11 +35,6 @@ function showInfo() {
         cy = canvas.height / 2;
     });
 
-
-    pow1 = new Audio("./music/music1.mp3");
-    pow1.play();
-    return;
-
     initVars();
     frame();
     S.init();
@@ -374,10 +369,10 @@ function initDate() {
 
 window.onload = function(){
     window.addEventListener("touchend", function(e) {
-        pow1 = new Audio(s + "pow1.ogg");
-        pow2 = new Audio(s + "pow2.ogg");
-        pow3 = new Audio(s + "pow3.ogg");
-        pow4 = new Audio(s + "pow4.ogg");
+        pow1 = new Audio("./music/music1.mp3");
+        pow2 = new Audio("./music/music2.mp3");
+        pow3 = new Audio("./music/music3.mp3");
+        pow4 = new Audio("./music/music4.mp3");
         pow1.load();
         pow2.load();
         pow3.load();

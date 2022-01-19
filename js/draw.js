@@ -23,14 +23,6 @@ function initVars() {
         sparkPics.push(sparkPic);
     }
     sparks = new Array();
-    pow1 = new Audio(s + "pow1.ogg");
-    pow2 = new Audio(s + "pow2.ogg");
-    pow3 = new Audio(s + "pow3.ogg");
-    pow4 = new Audio(s + "pow4.ogg");
-    pow1.load();
-    pow2.load();
-    pow3.load();
-    pow4.load();
     frames = 0;
 }
 
@@ -373,6 +365,19 @@ function initDate() {
     var ss = parseInt(D.getTime() / 1000);
     if (yy < 100) yy = "19" + yy;
     document.getElementById('lunar').innerHTML = calendar.getLunartoDay(yy + '-' + mm + '-' + dd);
+}
+
+window.onload = function(){
+    window.addEventListener("touchend", function(e) {
+        pow1 = new Audio(s + "pow1.ogg");
+        pow2 = new Audio(s + "pow2.ogg");
+        pow3 = new Audio(s + "pow3.ogg");
+        pow4 = new Audio(s + "pow4.ogg");
+        pow1.load();
+        pow2.load();
+        pow3.load();
+        pow4.load();
+    }, false);
 }
 
 initDate();

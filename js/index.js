@@ -9,7 +9,7 @@ var S = {
         if (i !== -1) {
             S.UI.simulate(decodeURI(action).substring(i + 3));
         } else {
-            S.UI.simulate('|#countdown 3|李|雪|新|年|快|乐|#rectangle 李雪新年快乐|');
+            S.UI.simulate('|#countdown 3|李|雪|新|年|快|乐|#rectangle 你好|');
         }
 
         S.Drawing.loop(function () {
@@ -153,6 +153,7 @@ S.UI = (function () {
                                 performAction(sequence);
                             }
                         } else {
+                            console.log(S.ShapeBuilder.letter(index), 'here2');
                             S.Shape.switchShape(S.ShapeBuilder.letter(index), true);
                         }
                     }, 1000, value, true);
@@ -161,7 +162,6 @@ S.UI = (function () {
                 case 'rectangle':
                     value = value && value.split('x');
                     value = (value && value.length === 2) ? value : [maxShapeSize, maxShapeSize / 2];
-                    console.log(value);
                     S.Shape.switchShape(S.ShapeBuilder.rectangle(Math.min(maxShapeSize, parseInt(value[0])), Math.min(maxShapeSize, parseInt(value[1]))));
                     break;
 

@@ -190,7 +190,6 @@ function splode(x, y, z) {
 }
 
 function doLogic() {
-
     if (seedTimer < frames) {
         seedTimer = frames + seedInterval * Math.random() * 10;
         spawnSeed();

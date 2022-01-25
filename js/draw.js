@@ -60,7 +60,7 @@ function showInfo() {
 function showText(target) {
     switch (target) {
         case 'give':
-            $('.copyright-box').text('送你一场不散的烟花雨');
+            $('.copyright-box').text('赠你烟花雨');
             break;
         default :
             $('.'+target).css('display', 'block');
@@ -382,7 +382,8 @@ function initDate() {
     var festivalTop = "故";
     var festivalBottom = "乡";
     target = '|#countdown 3|祝|李|雪|好|运|爆|膨|#rectangle oo|';
-    context = '生活明朗，万物可爱，希望今年的你平安喜乐';
+    var chineseContext = '生活明朗，万物可爱，希望今年的你平安喜乐';
+    var englishContext = 'Life is clear, everything is lovely, I hope you are safe and happy this year'
     var festival_context = '平安喜乐';
     var festival_btn = '开启贺卡';
     switch (aDate) {
@@ -392,7 +393,8 @@ function initDate() {
             target = '|#countdown 3|李|雪|小|年|快|乐|#rectangle oo|';
             festival_context = '小年快乐';
             festival_btn = '开启小年贺卡';
-            context = '生活明朗，万物可爱，希望今年的你平安喜乐';
+            englishContext = 'I wish you happiness every day and always feel that the world is worth it';
+            chineseContext = '时时遇快乐，人间常值得';
             break;
         case "腊月三十":
             festivalTop = "除";
@@ -400,7 +402,8 @@ function initDate() {
             target = '|#countdown 3|李|雪|除|夕|快|乐|#rectangle oo|';
             festival_context = '除夕快乐';
             festival_btn = '开启除夕贺卡';
-            context = '生活明朗，万物可爱，希望今年的你平安喜乐';
+            englishContext = 'I wish you all the best and all the best';
+            chineseContext = '愿你一切尽意，百事从欢';
             break;
         case "腊月廿九":
             nextDay = calendar.getLunarFestival(yy + '-' + mm + '-' + dd);
@@ -410,7 +413,8 @@ function initDate() {
                 target = '|#countdown 3|李|雪|除|夕|快|乐|#rectangle oo|';
                 festival_context = '除夕快乐';
                 festival_btn = '开启除夕贺卡';
-                context = '生活明朗，万物可爱，希望今年的你平安喜乐';
+                englishContext = 'I wish you all the best and all the best';
+                chineseContext = '愿你一切尽意，百事从欢';
             }
             break;
         case "正月初一":
@@ -424,7 +428,8 @@ function initDate() {
             target = '|#countdown 3|李|雪|春|节|快|乐|#rectangle oo|';
             festival_context = '春节快乐';
             festival_btn = '开启春节贺卡';
-            context = '生活明朗，万物可爱，希望今年的你平安喜乐';
+            englishContext = 'May you reunite with your ideals after walking through the mountains and rivers';
+            chineseContext = '愿你走完山水万城，仍与理想重逢';
             break;
         case '正月十五':
             festivalTop = "元";
@@ -432,16 +437,18 @@ function initDate() {
             target = '|#countdown 3|李|雪|元|宵|节|快|乐|#rectangle oo|';
             festival_context = '元宵节快乐';
             festival_btn = '开启元宵贺卡';
-            context = '生活明朗，万物可爱，希望今年的你平安喜乐';
+            englishContext = 'May the heaven and earth be filled with joy, every year and tonight';
+            chineseContext = '愿天上人间，占得欢娱，年年今夜';
             break;
     }
     $('.festival-top').html(festivalTop);
     $('.festival-bottom').html(festivalBottom);
     $('.festival-context').html(festival_context);
     $('.festival-btn').html(festival_btn);
-    $('.context').html(context);
+    $('.englishContext').text(englishContext);
+    $('.chineseContext').html(chineseContext);
     var height = window.screen.height;
-    if (height > 750) {
+    if (height > 812) {
         $('.festival-top, .festival-bottom').css("font-size", "180px");
     }
 }

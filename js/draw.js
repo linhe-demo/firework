@@ -35,6 +35,8 @@ function showInfo() {
         cy = canvas.height / 2;
     });
 
+    alert('功能暂未开启，敬请期待！');
+    return;
 
     pow1 = new Audio("./music/music1.mp3");
     pow2 = new Audio("./music/music2.mp3");

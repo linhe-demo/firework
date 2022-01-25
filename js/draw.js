@@ -52,15 +52,15 @@ function showInfo() {
     $('html, body').css({'background':'transparent', 'background-color':'black'});
     $('.copyright-box').html('');
     $('.top-box, .blessing-box, .music-box').remove();
-    setTimeout("showText('give')", 22000);
     setTimeout("showText('context')", 22000);
-    setTimeout("showBk()", 22000);
+    setTimeout("showText('give')", 22000);
+    showBk();
 }
 
 function showText(target) {
     switch (target) {
         case 'give':
-            $('.copyright-box').html('<p style="font-size: 50px;color:#106cdd;">送你一场不散的烟花雨</p>');
+            $('.copyright-box').text('送你一场不散的烟花雨');
             break;
         default :
             $('.'+target).css('display', 'block');
@@ -69,7 +69,7 @@ function showText(target) {
 
 function showBk () {
     $('html, body').css({'background-image':"url('./img/bk1.jpg')", '-moz-background-size':'100% 100%', 'background-size':'100% 100%'});
-    $('p').css({'color': 'white','letter-spacing':'15px','font-weight':'bold'});
+    $('.copyright-box').css({'color': 'white','letter-spacing':'15px','font-weight':'bold'});
 }
 
 
@@ -437,9 +437,12 @@ function initDate() {
     }
     $('.festival-top').html(festivalTop);
     $('.festival-bottom').html(festivalBottom);
-    $('.festival-top, .festival-bottom').css("font-size", "180px");
     $('.festival-context').html(festival_context);
     $('.festival-btn').html(festival_btn);
     $('.context').html(context);
+    var height = window.screen.height;
+    if (height > 668) {
+        $('.festival-top, .festival-bottom').css("font-size", "180px");
+    }
 }
 initDate();

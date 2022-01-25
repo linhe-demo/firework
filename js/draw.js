@@ -35,9 +35,6 @@ function showInfo() {
         cy = canvas.height / 2;
     });
 
-    alert('功能暂未开启，敬请期待！');
-    return;
-
     pow1 = new Audio("./music/music1.mp3");
     pow2 = new Audio("./music/music2.mp3");
     pow3 = new Audio("./music/music3.mp3");
@@ -55,12 +52,9 @@ function showInfo() {
     $('html, body').css({'background':'transparent', 'background-color':'black'});
     $('.copyright-box').html('');
     $('.top-box, .blessing-box, .music-box').remove();
-    setTimeout("showText('give')", 26000);
-    setTimeout("showText('poem1')", 22000);
-    setTimeout("showText('poem2')", 23000);
-    setTimeout("showText('poem3')", 24000);
-    setTimeout("showText('poem4')", 25000);
-    setTimeout("showText('poem4')", 32000);
+    setTimeout("showText('give')", 22000);
+    setTimeout("showText('context')", 22000);
+    setTimeout("showBk()", 22000);
 }
 
 function showText(target) {
@@ -71,6 +65,11 @@ function showText(target) {
         default :
             $('.'+target).css('display', 'block');
     }
+}
+
+function showBk () {
+    $('html, body').css({'background-image':"url('./img/bk1.jpg')", '-moz-background-size':'100% 100%', 'background-size':'100% 100%'});
+    $('p').css({'color': 'white','letter-spacing':'15px','font-weight':'bold'});
 }
 
 
@@ -380,20 +379,28 @@ function initDate() {
     document.getElementById('lunar').innerHTML = calendar.getLunartoDay(yy + '-' + mm + '-' + dd);
     //调用js方法，参数分别是公历年、月、日；返回农历日期或农历节假日
     var aDate = calendar.getLunarFestival(yy + '-' + mm + '-' + dd);
-    console.log(aDate);
     var festivalTop = "故";
     var festivalBottom = "乡";
     target = '|#countdown 3|祝|李|雪|好|运|爆|膨|#rectangle oo|';
+    context = '生活明朗，万物可爱，希望今年的你平安喜乐';
+    var festival_context = '平安喜乐';
+    var festival_btn = '';
     switch (aDate) {
         case '腊月廿三':
             festivalTop = "祭";
             festivalBottom = "灶";
             target = '|#countdown 3|李|雪|小|年|快|乐|#rectangle oo|';
+            festival_context = '小年快乐';
+            festival_btn = '小年';
+            context = '生活明朗，万物可爱，希望今年的你平安喜乐';
             break;
         case "腊月三十":
             festivalTop = "除";
             festivalBottom = "夕";
             target = '|#countdown 3|李|雪|除|夕|快|乐|#rectangle oo|';
+            festival_context = '除夕快乐';
+            festival_btn = '除夕';
+            context = '生活明朗，万物可爱，希望今年的你平安喜乐';
             break;
         case "腊月廿九":
             nextDay = calendar.getLunarFestival(yy + '-' + mm + '-' + dd);
@@ -401,6 +408,9 @@ function initDate() {
                 festivalTop = "除";
                 festivalBottom = "夕";
                 target = '|#countdown 3|李|雪|除|夕|快|乐|#rectangle oo|';
+                festival_context = '除夕快乐';
+                festival_btn = '除夕';
+                context = '生活明朗，万物可爱，希望今年的你平安喜乐';
             }
             break;
         case "正月初一":
@@ -412,15 +422,24 @@ function initDate() {
             festivalTop = "春";
             festivalBottom = "节";
             target = '|#countdown 3|李|雪|春|节|快|乐|#rectangle oo|';
+            festival_context = '春节快乐';
+            festival_btn = '春节';
+            context = '生活明朗，万物可爱，希望今年的你平安喜乐';
             break;
         case '正月十五':
             festivalTop = "元";
             festivalBottom = "宵";
             target = '|#countdown 3|李|雪|元|宵|节|快|乐|#rectangle oo|';
+            festival_context = '元宵节快乐';
+            festival_btn = '元宵节';
+            context = '生活明朗，万物可爱，希望今年的你平安喜乐';
             break;
     }
     $('.festival-top').html(festivalTop);
     $('.festival-bottom').html(festivalBottom);
+    $('.festival-top, .festival-bottom').css("font-size", "180px");
+    $('.festival-context').html(festival_context);
+    $('.festival-btn').html(festival_btn);
+    $('.context').html(context);
 }
-
 initDate();

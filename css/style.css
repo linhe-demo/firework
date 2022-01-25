@@ -70,49 +70,20 @@ html, body {
     font-size: 50px;
     text-align: right;
 }
-
-.poem1 {
+.festival-context {
+    text-align: center;
+}
+.context {
     position: absolute;
     display: none;
-    top: 30%;
+    top: 20%;
     left: 25%;
-    width: 8%;
-    color: #409dc1;
+    width: 60%;
+    color: white;
     font-size: 50px;
-    text-align: center;
-}
-
-.poem2 {
-    position: absolute;
-    display: none;
-    top: 30%;
-    left: 40%;
-    width: 8%;
-    color: #409dc1;
-    font-size: 50px;
-    text-align: center;
-}
-
-.poem3 {
-    position: absolute;
-    display: none;
-    top: 30%;
-    left: 55%;
-    width: 8%;
-    color: #409dc1;
-    font-size: 50px;
-    text-align: center;
-}
-
-.poem4 {
-    position: absolute;
-    display: none;
-    top: 30%;
-    left: 70%;
-    width: 8%;
-    color: #409dc1;
-    font-size: 50px;
-    text-align: center;
+    line-height: 100px;
+    letter-spacing: 20px;
+    font-weight: bold;
 }
 
 @keyframes masked-animation {

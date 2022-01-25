@@ -441,7 +441,7 @@ function initDate() {
     $('.festival-btn').html(festival_btn);
     $('.context').html(context);
     var height = window.screen.height;
-    if (height > 668) {
+    if (height > 750) {
         $('.festival-top, .festival-bottom').css("font-size", "180px");
     }
 }

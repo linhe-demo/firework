@@ -58,12 +58,13 @@ function showInfo() {
     setTimeout("showText('poem2')", 23000);
     setTimeout("showText('poem3')", 24000);
     setTimeout("showText('poem4')", 25000);
+    setTimeout("showText('poem4')", 32000);
 }
 
 function showText(target) {
     switch (target) {
         case 'give':
-            $('.copyright-box').html('<p style="font-size: 50px;">送你一场不散的烟花雨</p>');
+            $('.copyright-box').html('<p style="font-size: 50px;color:#106cdd;">送你一场不散的烟花雨</p>');
             break;
         default :
             $('.'+target).css('display', 'block');
@@ -375,12 +376,49 @@ function initDate() {
     var ss = parseInt(D.getTime() / 1000);
     if (yy < 100) yy = "19" + yy;
     document.getElementById('lunar').innerHTML = calendar.getLunartoDay(yy + '-' + mm + '-' + dd);
-}
-
-window.onload = function(){
-    window.addEventListener("touchend", function(e) {
-
-    }, false);
+    //调用js方法，参数分别是公历年、月、日；返回农历日期或农历节假日
+    var aDate = calendar.getLunarFestival(yy + '-' + mm + '-' + dd);
+    console.log(aDate);
+    var festivalTop = "故";
+    var festivalBottom = "乡";
+    target = '|#countdown 3|祝|李|雪|好|运|爆|膨|#rectangle oo|';
+    switch (aDate) {
+        case '腊月廿三':
+            festivalTop = "祭";
+            festivalBottom = "灶";
+            target = '|#countdown 3|李|雪|小|年|快|乐|#rectangle oo|';
+            break;
+        case "腊月三十":
+            festivalTop = "除";
+            festivalBottom = "夕";
+            target = '|#countdown 3|李|雪|除|夕|快|乐|#rectangle oo|';
+            break;
+        case "腊月廿九":
+            nextDay = calendar.getLunarFestival(yy + '-' + mm + '-' + dd);
+            if (nextDay != '腊月三十') {
+                festivalTop = "除";
+                festivalBottom = "夕";
+                target = '|#countdown 3|李|雪|除|夕|快|乐|#rectangle oo|';
+            }
+            break;
+        case "正月初一":
+        case "正月初二":
+        case "正月初三":
+        case "正月初四":
+        case "正月初五":
+        case "正月初六":
+            festivalTop = "春";
+            festivalBottom = "节";
+            target = '|#countdown 3|李|雪|春|节|快|乐|#rectangle oo|';
+            break;
+        case '正月十五':
+            festivalTop = "元";
+            festivalBottom = "宵";
+            target = '|#countdown 3|李|雪|元|宵|节|快|乐|#rectangle oo|';
+            break;
+    }
+    $('.festival-top').html(festivalTop);
+    $('.festival-bottom').html(festivalBottom);
 }
 
 initDate();

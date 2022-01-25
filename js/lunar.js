@@ -553,6 +553,10 @@ var calendar = {
     },
     getLunartoDay: function() {
         var today = this.parseDate();
-        return today.gzYear + " ( " + today.Animal + " ) 年 <br>" + today.IMonthCn + today.IDayCn + " " + (today.Term ? today.Term : "");
+        return today.gzYear + " " + today.Animal + " 年 <br>" + today.IMonthCn + today.IDayCn + " " + (today.Term ? today.Term : "");
+    },
+    getLunarFestival: function() {
+        var today = this.parseDate();
+        return  today.IMonthCn + today.IDayCn ;
     }
 };

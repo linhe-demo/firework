@@ -384,14 +384,14 @@ function initDate() {
     target = '|#countdown 3|祝|李|雪|好|运|爆|膨|#rectangle oo|';
     context = '生活明朗，万物可爱，希望今年的你平安喜乐';
     var festival_context = '平安喜乐';
-    var festival_btn = '';
+    var festival_btn = '开启贺卡';
     switch (aDate) {
         case '腊月廿三':
             festivalTop = "祭";
             festivalBottom = "灶";
             target = '|#countdown 3|李|雪|小|年|快|乐|#rectangle oo|';
             festival_context = '小年快乐';
-            festival_btn = '小年';
+            festival_btn = '开启小年贺卡';
             context = '生活明朗，万物可爱，希望今年的你平安喜乐';
             break;
         case "腊月三十":
@@ -399,7 +399,7 @@ function initDate() {
             festivalBottom = "夕";
             target = '|#countdown 3|李|雪|除|夕|快|乐|#rectangle oo|';
             festival_context = '除夕快乐';
-            festival_btn = '除夕';
+            festival_btn = '开启除夕贺卡';
             context = '生活明朗，万物可爱，希望今年的你平安喜乐';
             break;
         case "腊月廿九":
@@ -409,7 +409,7 @@ function initDate() {
                 festivalBottom = "夕";
                 target = '|#countdown 3|李|雪|除|夕|快|乐|#rectangle oo|';
                 festival_context = '除夕快乐';
-                festival_btn = '除夕';
+                festival_btn = '开启除夕贺卡';
                 context = '生活明朗，万物可爱，希望今年的你平安喜乐';
             }
             break;
@@ -423,7 +423,7 @@ function initDate() {
             festivalBottom = "节";
             target = '|#countdown 3|李|雪|春|节|快|乐|#rectangle oo|';
             festival_context = '春节快乐';
-            festival_btn = '春节';
+            festival_btn = '开启春节贺卡';
             context = '生活明朗，万物可爱，希望今年的你平安喜乐';
             break;
         case '正月十五':
@@ -431,7 +431,7 @@ function initDate() {
             festivalBottom = "宵";
             target = '|#countdown 3|李|雪|元|宵|节|快|乐|#rectangle oo|';
             festival_context = '元宵节快乐';
-            festival_btn = '元宵节';
+            festival_btn = '开启元宵贺卡';
             context = '生活明朗，万物可爱，希望今年的你平安喜乐';
             break;
     }

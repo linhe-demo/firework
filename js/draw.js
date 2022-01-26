@@ -52,9 +52,9 @@ function showInfo() {
     $('html, body').css({'background':'transparent', 'background-color':'black'});
     $('.copyright-box').html('');
     $('.top-box, .blessing-box, .music-box').remove();
-    setTimeout("showText('context')", 22000);
-    setTimeout("showText('give')", 22000);
-    setTimeout("showBk()", 22000);
+    setTimeout("showText('context')", 25000);
+    setTimeout("showText('give')", 25000);
+    setTimeout("showBk()", 25000);
 }
 
 function showText(target) {

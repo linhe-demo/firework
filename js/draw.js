@@ -54,7 +54,7 @@ function showInfo() {
     $('.top-box, .blessing-box, .music-box').remove();
     setTimeout("showText('context')", 22000);
     setTimeout("showText('give')", 22000);
-    showBk();
+    setTimeout("showBk()", 22000);
 }
 
 function showText(target) {
@@ -369,6 +369,9 @@ function frame() {
 }
 
 function initDate() {
+    var random = ['云|想|衣|裳|花|想|容', '春|风|拂|槛|露|华|浓', '若|非|群|玉|山|头|见', '会|向|瑶|台|月|下|逢', '梨|花|淡|白|柳|深|青',
+    '柳|絮|飞|时|花|满|城', '惆|怅|东|栏|一|株|雪', '人|生|看|得|几|清|明'];
+    var index = Math.floor(Math.random()*(0 - 7) + 7);
     var D = new Date();
     var yy = D.getFullYear();
     var mm = D.getMonth() + 1;
@@ -381,7 +384,7 @@ function initDate() {
     var aDate = calendar.getLunarFestival(yy + '-' + mm + '-' + dd);
     var festivalTop = "故";
     var festivalBottom = "乡";
-    target = '|#countdown 3|祝|李|雪|好|运|爆|膨|#rectangle oo|';
+    target = '|#countdown 3|'+ random[index] +'|#rectangle oo|';
     var chineseContext = '生活明朗，万物可爱，希望今年的你平安喜乐';
     var englishContext = 'Life is clear, everything is lovely, I hope you are safe and happy this year'
     var festival_context = '平安喜乐';

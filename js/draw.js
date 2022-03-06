@@ -407,7 +407,10 @@ function login() {
     if (token === null || token.length === 0) {
         showRegisterWindow();
     } else {
-        requireData(requireUrl + "user/login", "POST", "", {'Access-Token':token})
+        var info = requireData(requireUrl + "user/login", "POST", "", {'Access-Token':token})
+        if (info.code !== 0) {
+            showRegisterWindow();
+        }
     }
 }
 
@@ -421,6 +424,7 @@ function register() {
     if (info.code === 1) {
         $(".register").css("display", "none");
         localStorage.setItem("accessToken", info.data)
+        getInitData();
     } else {
         alert("注册失败，请重试");
     }
@@ -452,4 +456,3 @@ function initDate(info) {
 }
 
 login();
-getInitData();

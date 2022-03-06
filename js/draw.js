@@ -1,5 +1,7 @@
 var begin = false;
-var s = "https://cantelope.org/NYE/";
+var requireUrl = "http://192.168.0.105:10106/";
+var token = "";
+var flower = false;
 
 function initVars() {
     pi = Math.PI;
@@ -49,7 +51,7 @@ function showInfo() {
     frame();
     S.init();
 
-    $('html, body').css({'background':'transparent', 'background-color':'black'});
+    $('html, body').css({'background': 'transparent', 'background-color': 'black'});
     $('.copyright-box').html('');
     $('.top-box, .blessing-box, .music-box').remove();
     setTimeout("showText('context')", 25000);
@@ -63,13 +65,21 @@ function showText(target) {
             $('.copyright-box').text('赠你烟花雨');
             break;
         default :
-            $('.'+target).css('display', 'block');
+            $('.' + target).css('display', 'block');
     }
 }
 
-function showBk () {
-    $('html, body').css({'background-image':"url('./img/bk1.jpg')", '-moz-background-size':'100% 100%', 'background-size':'100% 100%'});
-    $('.copyright-box').css({'color': 'white','letter-spacing':'15px','font-weight':'bold'});
+function showBk() {
+    if (flower === true) {
+        window.location.href = './page/flower.html';
+    } else {
+        $('html, body').css({
+            'background-image': "url('./img/bk1.jpg')",
+            '-moz-background-size': '100% 100%',
+            'background-size': '100% 100%'
+        });
+        $('.copyright-box').css({'color': 'white', 'letter-spacing': '15px', 'font-weight': 'bold'});
+    }
 }
 
 
@@ -357,7 +367,6 @@ function draw() {
 }
 
 function frame() {
-
     if (frames > 100000) {
         seedTimer = 0;
         frames = 0;
@@ -368,91 +377,79 @@ function frame() {
     requestAnimationFrame(frame);
 }
 
-function initDate() {
-    var random = ['云|想|衣|裳|花|想|容', '春|风|拂|槛|露|华|浓', '若|非|群|玉|山|头|见', '会|向|瑶|台|月|下|逢', '梨|花|淡|白|柳|深|青',
-    '柳|絮|飞|时|花|满|城', '惆|怅|东|栏|一|株|雪', '人|生|看|得|几|清|明'];
-    var index = Math.floor(Math.random()*(0 - 7) + 7);
-    var D = new Date();
-    var yy = D.getFullYear();
-    var mm = D.getMonth() + 1;
-    var dd = D.getDate();
-    var ww = D.getDay();
-    var ss = parseInt(D.getTime() / 1000);
-    if (yy < 100) yy = "19" + yy;
-    document.getElementById('lunar').innerHTML = calendar.getLunartoDay(yy + '-' + mm + '-' + dd);
-    //调用js方法，参数分别是公历年、月、日；返回农历日期或农历节假日
-    var aDate = calendar.getLunarFestival(yy + '-' + mm + '-' + dd);
-    var festivalTop = "故";
-    var festivalBottom = "乡";
-    target = '|#countdown 3|'+ random[index] +'|#rectangle oo|';
-    var chineseContext = '生活明朗，万物可爱，希望今年的你平安喜乐';
-    var englishContext = 'Life is clear, everything is lovely, I hope you are safe and happy this year'
-    var festival_context = '平安喜乐';
-    var festival_btn = '开启贺卡';
-    switch (aDate) {
-        case '腊月廿三':
-            festivalTop = "祭";
-            festivalBottom = "灶";
-            target = '|#countdown 3|李|雪|小|年|快|乐|#rectangle oo|';
-            festival_context = '小年快乐';
-            festival_btn = '开启小年贺卡';
-            englishContext = 'I wish you happiness every day and always feel that the world is worth it';
-            chineseContext = '时时遇快乐，人间常值得';
-            break;
-        case "腊月三十":
-            festivalTop = "除";
-            festivalBottom = "夕";
-            target = '|#countdown 3|李|雪|除|夕|快|乐|#rectangle oo|';
-            festival_context = '除夕快乐';
-            festival_btn = '开启除夕贺卡';
-            englishContext = 'I wish you all the best and all the best';
-            chineseContext = '愿你一切尽意，百事从欢';
-            break;
-        case "腊月廿九":
-            nextDay = calendar.getLunarFestival(yy + '-' + mm + '-' + dd);
-            if (nextDay != '腊月三十') {
-                festivalTop = "除";
-                festivalBottom = "夕";
-                target = '|#countdown 3|李|雪|除|夕|快|乐|#rectangle oo|';
-                festival_context = '除夕快乐';
-                festival_btn = '开启除夕贺卡';
-                englishContext = 'I wish you all the best and all the best';
-                chineseContext = '愿你一切尽意，百事从欢';
+function requireData(url, method, param, header) {
+    var info = [];
+    $.ajax({
+        type: method,
+        url: url,
+        data: param,
+        dataType: "json",
+        headers: header,
+        async: false,
+        success: function (data) {
+            info = data;
+        },
+        error : function(xhr,textStatus,errorThrown){
+            if (xhr.status === 401) {
+                showRegisterWindow();
             }
-            break;
-        case "正月初一":
-        case "正月初二":
-        case "正月初三":
-        case "正月初四":
-        case "正月初五":
-        case "正月初六":
-            festivalTop = "春";
-            festivalBottom = "节";
-            target = '|#countdown 3|李|雪|春|节|快|乐|#rectangle oo|';
-            festival_context = '春节快乐';
-            festival_btn = '开启春节贺卡';
-            englishContext = 'May you reunite with your ideals after walking through the mountains and rivers';
-            chineseContext = '愿你走完山水万城，仍与理想重逢';
-            break;
-        case '正月十五':
-            festivalTop = "元";
-            festivalBottom = "宵";
-            target = '|#countdown 3|李|雪|元|宵|节|快|乐|#rectangle oo|';
-            festival_context = '元宵节快乐';
-            festival_btn = '开启元宵贺卡';
-            englishContext = 'May the heaven and earth be filled with joy, every year and tonight';
-            chineseContext = '愿天上人间，占得欢娱，年年今夜';
-            break;
+        }
+    });
+    return info;
+}
+
+function showRegisterWindow() {
+    $(".register").css("display", "block");
+}
+
+function login() {
+    token = localStorage.getItem("accessToken");
+    if (token === null || token.length === 0) {
+        showRegisterWindow();
+    } else {
+        requireData(requireUrl + "user/login", "POST", "", {'Access-Token':token})
     }
-    $('.festival-top').html(festivalTop);
-    $('.festival-bottom').html(festivalBottom);
-    $('.festival-context').html(festival_context);
-    $('.festival-btn').html(festival_btn);
-    $('.englishContext').text(englishContext);
-    $('.chineseContext').html(chineseContext);
+}
+
+function register() {
+    let nickname = $('.nickname').val();
+    if (nickname === "") {
+        alert("昵称不允许为空");
+        return;
+    }
+    let info = requireData(requireUrl + "user/register", "POST", {'mould': 1, 'nick_name': nickname});
+    if (info.code === 1) {
+        $(".register").css("display", "none");
+        localStorage.setItem("accessToken", info.data)
+    } else {
+        alert("注册失败，请重试");
+    }
+}
+
+function getInitData() {
+    let info = requireData(requireUrl + "init/info", "POST", "", {'Access-Token':token})
+    initDate(info);
+    //写入访问日志
+    requireData(requireUrl + "log/save", "POST", "", {'Access-Token':token})
+}
+
+function initDate(info) {
+    target = '|#countdown 3|'+ info.data.fire_work_words +'|#rectangle oo|';
+    document.getElementById('lunar').innerHTML = info.data.year + "<br>" + info.data.month;
+    let name = info.data.festival_name
+    name = name.split("|")
+    $('.festival-top').html(name[0]);
+    $('.festival-bottom').html(name[1]);
+    $('.festival-context').html(info.data.bless_festival);
+    $('.festival-btn').html(info.data.btn_words);
+    $('.englishContext').text(info.data.bless_english);
+    $('.chineseContext').html(info.data.bless_chinese);
     var height = window.screen.height;
     if (height > 812) {
         $('.festival-top, .festival-bottom').css("font-size", "180px");
     }
+    flower = info.data.flower;
 }
-initDate();
+
+login();
+getInitData();

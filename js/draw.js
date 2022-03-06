@@ -426,6 +426,7 @@ function register() {
     if (info.code === 1) {
         $(".register").css("display", "none");
         localStorage.setItem("accessToken", info.data)
+        token = info.data;
         getInitData();
     } else {
         alert("注册失败，请重试");

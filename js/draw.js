@@ -1,5 +1,5 @@
 var begin = false;
-var requireUrl = "http://192.168.0.105:10106/";
+var requireUrl = "http://120.78.171.134:8082/";
 var token = "";
 var flower = false;
 

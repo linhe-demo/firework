@@ -1,5 +1,5 @@
 var begin = false;
-var requireUrl = "http://120.78.171.134:8082/";
+var requireUrl = "http://192.168.0.105:10106/";
 var token = "";
 var flower = false;
 
@@ -54,9 +54,9 @@ function showInfo() {
     $('html, body').css({'background': 'transparent', 'background-color': 'black'});
     $('.copyright-box').html('');
     $('.top-box, .blessing-box, .music-box').remove();
-    setTimeout("showText('context')", 25000);
-    setTimeout("showText('give')", 25000);
-    setTimeout("showBk()", 25000);
+    setTimeout("showText('context')", 20000);
+    setTimeout("showText('give')", 20000);
+    setTimeout("showBk()", 20000);
 }
 
 function showText(target) {
@@ -408,8 +408,10 @@ function login() {
         showRegisterWindow();
     } else {
         var info = requireData(requireUrl + "user/login", "POST", "", {'Access-Token':token})
-        if (info.code !== 0) {
+        if (info.code !== 1) {
             showRegisterWindow();
+        }else{
+            getInitData();
         }
     }
 }
@@ -438,6 +440,7 @@ function getInitData() {
 }
 
 function initDate(info) {
+
     target = '|#countdown 3|'+ info.data.fire_work_words +'|#rectangle oo|';
     document.getElementById('lunar').innerHTML = info.data.year + "<br>" + info.data.month;
     let name = info.data.festival_name
